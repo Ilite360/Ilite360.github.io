@@ -1,39 +1,148 @@
-## Welcome to GitHub Pages
+<!DOCTYPE html>
+<html lang="de">
 
-You can use the [editor on GitHub](https://github.com/Ilite360/Ilite360.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+<head>
+    <style>
+        #bild1 {
+            position: absolute;
+            max-width: 40%;
+            max-height: 40%;
+            min-width: 10%;
+            min-height: 10%;
+            top: 20%;
+        }
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+        #bild2 {
+            position: absolute;
+            max-width: 40%;
+            max-height: 40%;
+            min-width: 10%;
+            min-height: 10%;
+            top: 20%;
+        }
 
-### Markdown
+        #bild3 {
+            position: absolute;
+            max-width: 40%;
+            max-height: 40%;
+            min-width: 10%;
+            min-height: 10%;
+            top: 20%;
+        }
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+        #ComputerSeite {
+            position: absolute;
+            max-width: 48%;
+            min-width: 20%;
+            max-height: 48%;
+            min-height: 20%;
+            float: left;
+            margin: 5%;
+        }
 
-```markdown
-Syntax highlighted code block
+        #KameraSeite {
+            max-width: 48%;
+            min-width: 20%;
+            max-height: 48%;
+            min-height: 20%;
+            float: left;
+            margin-left: 75%;
+            margin-top: 4.5%;
+        }
 
-# Header 1
-## Header 2
-### Header 3
+        #runde {
+            position: absolute;
+            float: none;
+            margin-left: 45%;
+        }
 
-- Bulleted
-- List
+        #computerZaehler {
+            position: absolute;
+            float: none;
+            margin-left: 10%;
+        }
 
-1. Numbered
-2. List
+        #spielerZaehler {
+            position: absolute;
+            float: none;
+            margin-left: 75%;
+        }
 
-**Bold** and _Italic_ and `Code` text
+        #Gewonnen {
+            position: absolute;
+            float: none;
+            margin-left: 45%;
+            margin-top: 40%;
+        }
+        #SpielerWDiv
+        {
+            position: absolute;
+            float: none;
+            margin-top: 40%;
 
-[Link](url) and ![Image](src)
-```
+        }
+        #ComputerWDiv
+        {
+            position: absolute;
+            float: none;
+            margin-top: 40%;
+            margin-left: 80%;
+        }
 
-[Peters Geheimstube](https://www.ajc-bk.de)
+    </style>
+</head>
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+<body>
+    <p style="text-align:center">Schere.png, Stein.jpg, Papyrus.gif!<br></p>
 
-### Jekyll Themes
+    <div id="ComputerSeite">
+        <h3>ComputerSeite</h3>
+        <img id="bild1" src="Schere.png" alt="Schere">
+        <img id="bild2" src="Stein.png" alt="Stein">
+        <img id="bild3" src="Papier.png" alt="Papier" titel>
+        <button style="margin-top: 90%;" onclick="neueRunde()">Runde starten</button>
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Ilite360/Ilite360.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+    </div>
 
-### Support or Contact
+    <div id="computerZaehler">
+        <p>0</p>
+    </div>
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+    <div id="runde">
+        <p>0</p>
+    </div>
+
+
+    <div id="KameraSeite">
+        <h3>Spielerseite</h3>
+
+    </div>
+
+    <div id="spielerZaehler">
+
+        <p>0</p>
+    </div>
+
+    <div id="Gewonnen">
+        <p id="gewonnen">TEST</p>
+    </div>
+    <div>
+        <p id="einzaehlen"></p>
+    </div>
+
+    <div id="ComputerWDiv">
+        <p id="computerWahl">123</p>
+    </div>
+    <div id="SpielerWDiv">
+        <p id="spielerWahl">321</p>
+    </div>
+
+    <script src="Skripte/AlleFunktionen.js"></script>
+    <script>
+        initModell();
+        neuesSpiel();
+    </script>
+
+</body>
+
+</html>
