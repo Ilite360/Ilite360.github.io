@@ -1,7 +1,7 @@
-let computerWahl = 0, spielerWahl = 0, computerZaehler = 0, spielerZaehler = 0, runde = 0, gewonnen = 0;
+var computerWahl = 0, spielerWahl = 0, computerZaehler = 0, spielerZaehler = 0, runde = 0, gewonnen = 0;
 
 function Sleep(milliseconds) {
-    return new Promise(resolve => setTimeout(resolve, milliseconds));
+    return new Promise (resolve => setTimeout(resolve, milliseconds));
 }
 
 
@@ -41,6 +41,15 @@ function computerZug() {
     var max = 3;
     var min = 0;
     computerWahl = Math.floor(Math.random() * max);
+    if (computerWahl == 0) {
+        document.getElementById("ComputerZug").src = "../Stein.png";
+    }
+    else if (computerWahl == 1){
+        document.getElementById("ComputerZug").src = "../Papier.png";
+    } 
+    else if (computerWahl == 2){
+        document.getElementById("ComputerZug").src = "../Schere.png";  
+    } 
 }
 
 function updateSpielstand() {
@@ -65,10 +74,10 @@ function updateSpielstand() {
     }
     // Gewonnen-------------------------------
     if (computerZaehler == 3) {
-        gewonnen = 1;
+        gewonnen = "Der Computer hat gewonnen!";
     }
     else if (spielerZaehler == 3) {
-        gewonnen = 2;
+        gewonnen = "Der Spieler hat gewonnen";
     }
 
 }
@@ -113,7 +122,7 @@ async function initModell() {
     webcam.play();
     window.requestAnimationFrame(loop);
 
-    document.getElementById('KameraSeite').appendChild(webcam.canvas);
+    document.getElementById("KameraSeite").appendChild(webcam.canvas);
 
 }
 
