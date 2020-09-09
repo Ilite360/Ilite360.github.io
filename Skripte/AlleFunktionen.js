@@ -8,13 +8,14 @@ function Sleep(milliseconds) {
 
 async function neueRunde() {
     document.getElementById("einzaehlen").innerText = "Schere";
-    await Sleep(3000);
+    await Sleep(1000);
     document.getElementById("einzaehlen").innerText = "Schere Stein";
-    await Sleep(3000);
+    await Sleep(1000);
     document.getElementById("einzaehlen").innerText = "Schere Stein Papier";
     spielerZug();
     computerZug();
     updateSpielstand();
+    runde++;
     updateGUI();
 }
 
@@ -42,65 +43,75 @@ function computerZug() {
     var min = 0;
     computerWahl = Math.floor(Math.random() * max);
     if (computerWahl == 0) {
-        document.getElementById("ComputerZug").src = "../Stein.png";
+        document.getElementById("ComputerZug").src = "../Papier.png";
+        document.getElementById("computerWahl").innerText = "Papier";
     }
     else if (computerWahl == 1){
-        document.getElementById("ComputerZug").src = "../Papier.png";
+        document.getElementById("ComputerZug").src = "../Stein.png";
+        document.getElementById("computerWahl").innerText = "Stein";
     } 
     else if (computerWahl == 2){
-        document.getElementById("ComputerZug").src = "../Schere.png";  
+        document.getElementById("ComputerZug").src = "../Schere.png";
+        document.getElementById("computerWahl").innerText = "Schere";
     } 
 }
 
 function updateSpielstand() {
 
      if (computerWahl == 0 && spielerWahl == 1) {
-        spielerZaehler++;
+        computerZaehler++;
     }
     else if (computerWahl == 0 && spielerWahl == 2) {
-        computerZaehler++;
+        spielerZaehler++;
     }
     else if (computerWahl == 1 && spielerWahl == 0) {
-        computerZaehler++;
+        spielerZaehler++;
     }
     else if (computerWahl == 1 && spielerWahl == 2) {
-        spielerZaehler++;
+        computerZaehler++;
     }
     else if (computerWahl == 2 && spielerWahl == 0) {
-        spielerZaehler++;
+        computerZaehler++;
     }
     else if (computerWahl == 2 && spielerWahl == 1) {
-        computerZaehler++;
+        spielerZaehler++;
     }
     // Gewonnen-------------------------------
     if (computerZaehler == 3) {
-        gewonnen = "Der Computer hat gewonnen!";
+        gewonnen = 1;
     }
     else if (spielerZaehler == 3) {
-        gewonnen = "Der Spieler hat gewonnen";
+        gewonnen = 2;
     }
 
 }
 
 function updateGUI() {
-
-    document.getElementById("computerWahl").innerText = zahlzutext(computerWahl);
     document.getElementById("spielerWahl").innerText = zahlzutext(spielerWahl);
     document.getElementById("computerZaehler").innerText = computerZaehler;
     document.getElementById("spielerZaehler").innerText = spielerZaehler;
-    document.getElementById("runde").innerText = runde;
-    document.getElementById("gewonnen").innerText = gewonnen;
+    document.getElementById("gewonnen").innerText = "Runde: " + runde;
+    
+    if(gewonnen == 1){
+        document.getElementById("gewonnen").innerText = "Der Computer hat gewonnen!";
+    }
+    else if (gewonnen == 2) {
+        document.getElementById("gewonnen").innerText = "Du hast gewonnen!";
+    }
+    
 }
 
 function zahlzutext(zahl){
-    if(zahl==0){
-        return "Stein";
-    }
-    else if(zahl==1){
-        return "Papier";
-    }
-    else if(zahl==2){
-        return "Schere";
+    switch(zahl){
+        case 0:
+            return "Papier";
+            break;
+        case 1:
+            return "Stein";
+            break;
+        case 2:
+            return "Schere";
+            break;
     }
 }
 
@@ -132,3 +143,7 @@ async function loop() {
     window.requestAnimationFrame(loop);
 }
 
+function popup() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
