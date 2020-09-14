@@ -2,27 +2,10 @@
 <html lang="de">
 
 <head>
+    <link rel="stylesheet" type="text/css" href="Css.css" media="screen" /> 
     <style>
-        #bild1 {
-            position: absolute;
-            max-width: 40%;
-            max-height: 40%;
-            min-width: 10%;
-            min-height: 10%;
-            top: 20%;
-        }
+        #ComputerZug {
 
-        #bild2 {
-            position: absolute;
-            max-width: 40%;
-            max-height: 40%;
-            min-width: 10%;
-            min-height: 10%;
-            top: 20%;
-        }
-
-        #bild3 {
-            position: absolute;
             max-width: 40%;
             max-height: 40%;
             min-width: 10%;
@@ -32,41 +15,25 @@
 
         #ComputerSeite {
             position: absolute;
-            max-width: 48%;
-            min-width: 20%;
-            max-height: 48%;
-            min-height: 20%;
+            width: 50%;
+            height: 50%;
             float: left;
             margin: 5%;
         }
 
         #KameraSeite {
-            max-width: 48%;
-            min-width: 20%;
-            max-height: 48%;
-            min-height: 20%;
+            width: 50%;
+            height: 50%;
             float: left;
-            margin-left: 75%;
+            margin-left: 55%;
             margin-top: 4.5%;
         }
 
         #runde {
             position: absolute;
-            float: none;
             margin-left: 45%;
         }
 
-        #computerZaehler {
-            position: absolute;
-            float: none;
-            margin-left: 10%;
-        }
-
-        #spielerZaehler {
-            position: absolute;
-            float: none;
-            margin-left: 75%;
-        }
 
         #Gewonnen {
             position: absolute;
@@ -74,70 +41,35 @@
             margin-left: 45%;
             margin-top: 40%;
         }
-        #SpielerWDiv
-        {
-            position: absolute;
-            float: none;
-            margin-top: 40%;
-
-        }
-        #ComputerWDiv
-        {
-            position: absolute;
-            float: none;
-            margin-top: 40%;
-            margin-left: 80%;
-        }
-
     </style>
 </head>
 
 <body>
-    <p style="text-align:center">Schere.png, Stein.jpg, Papyrus.gif!<br></p>
+    <p></p>
+    <p id="gewonnen" style="text-align: center">Spiel läuft</p>
+    <p id="einzaehlen" style="text-align: center">Schere, Stein, Papier</p>
 
     <div id="ComputerSeite">
-        <h3>ComputerSeite</h3>
-        <img id="bild1" src="Schere.png" alt="Schere">
-        <img id="bild2" src="Stein.png" alt="Stein">
-        <img id="bild3" src="Papier.png" alt="Papier" titel>
-        <button style="margin-top: 90%;" onclick="neueRunde()">Runde starten</button>
-
+        <p id="computerZaehler" style="margin-left: 5em">0</p>
+        <h3 class="popup" onclick="popup()">Computer
+        <img class = "popuptext" src="https://rp-online.de/imgs/32/2/4/5/6/0/7/6/1/tok_9cf1439611c575a8c9e3ac1d22839a91/w940_h528_x470_y264_3a542a5ddfea66a5.jpg" id="myPopup">
+    </h3>
+        <p id="computerWahl">Stein</p>
+        <img id="ComputerZug" src="" alt="">
+        
     </div>
-
-    <div id="computerZaehler">
-        <p>0</p>
-    </div>
-
-    <div id="runde">
-        <p>0</p>
-    </div>
-
-
     <div id="KameraSeite">
-        <h3>Spielerseite</h3>
-
+        <p id = "spielerZaehler" style="margin-left: 5em">0</p>
+        <h3 class="popup" onclick="popup()">Spieler
+        <img class = "popuptext" src="https://www.pngkey.com/png/detail/896-8960707_pin-von-punkrocknsfw-auf-reingeguckt-reingeguckt-png.png" id="myPopup">
+    </h3>
+        <p id="spielerWahl">Stein</p>
+        
     </div>
-
-    <div id="spielerZaehler">
-
-        <p>0</p>
-    </div>
-
-    <div id="Gewonnen">
-        <p id="gewonnen">TEST</p>
-    </div>
-    <div>
-        <p id="einzaehlen"></p>
-    </div>
-
-    <div id="ComputerWDiv">
-        <p id="computerWahl">123</p>
-    </div>
-    <div id="SpielerWDiv">
-        <p id="spielerWahl">321</p>
-    </div>
-
+    <button onclick="neueRunde()">Runde starten</button><button onclick="neuesSpiel()">Neues Spiel</button>
     <script src="Skripte/AlleFunktionen.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8.3/dist/teachablemachine-image.min.js"></script>
     <script>
         initModell();
         neuesSpiel();
